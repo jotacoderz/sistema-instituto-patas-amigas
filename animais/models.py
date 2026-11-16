@@ -7,5 +7,5 @@ class Animal(models.Model):
     idade = models.PositiveIntegerField(null=True, blank=True)
     data_cadastro = models.DateField(auto_now_add=True)
 
-    def _str_(self):
+    def __str__(self):
         return self.nome
