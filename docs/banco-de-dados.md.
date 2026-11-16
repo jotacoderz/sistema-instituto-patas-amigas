@@ -1,0 +1,61 @@
+Modelagem do Banco de Dados — Instituto Patas Amigas
+
+1. Banco de dados escolhido
+
+O sistema utilizará PostgreSQL como banco de dados relacional, integrado à aplicação Django.
+
+2. Entidades principais
+
+Animal
+
+* ID
+* Nome
+* Espécie
+* Idade
+* Características
+* Situação atual
+
+Registro veterinário
+
+* ID
+* Animal relacionado
+* Tipo de atendimento
+* Data
+* Descrição
+* Observações
+
+Adoção
+
+* ID
+* Animal relacionado
+* Data do processo
+* Situação
+* Observações
+
+Doação
+
+* ID
+* Tipo de doação
+* Quantidade ou valor
+* Data de recebimento
+* Descrição
+
+Usuário
+
+* ID
+* Nome
+* E-mail
+* Senha armazenada de forma protegida
+* Tipo de acesso
+
+3. Relacionamentos
+
+Um animal poderá possuir vários registros veterinários e poderá estar relacionado a um processo de adoção. Os usuários terão permissões conforme suas funções no instituto.
+
+4. Integridade e segurança
+
+Serão utilizadas chaves primárias e estrangeiras para organizar os relacionamentos. A aplicação deverá validar os dados antes de armazená-los e restringir operações conforme as permissões dos usuários.
+
+5. Observação
+
+Esta é uma proposta inicial de modelagem. A estrutura poderá ser ajustada durante o desenvolvimento do MVP, conforme as necessidades identificadas na validação.
