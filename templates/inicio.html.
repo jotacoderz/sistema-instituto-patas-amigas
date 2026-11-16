@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instituto Patas Amigas</title>
+</head>
+<body>
+    <header>
+        <h1>Instituto Patas Amigas</h1>
+        <p>Sistema de gerenciamento de animais</p>
+    </header>
+
+    <main>
+        <h2>Bem-vindo ao sistema</h2>
+        <p>Gerencie os animais cadastrados pela instituição.</p>
+
+        <nav>
+            <a href="/animais/">Consultar animais</a>
+            <a href="/animais/novo/">Cadastrar animal</a>
+        </nav>
+    </main>
+</body>
+</html>
