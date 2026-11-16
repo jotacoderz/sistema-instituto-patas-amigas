@@ -1,0 +1,17 @@
+Arquitetura do Sistema — Instituto Patas Amigas
+
+1. Visão geral
+
+O projeto utilizará uma arquitetura monolítica organizada em camadas, adequada ao desenvolvimento de um MVP de pequeno porte.
+
+2. Camada de apresentação
+
+Responsável pela interface utilizada pelos usuários, incluindo páginas, formulários, menus e mensagens de confirmação. Serão utilizados HTML5, CSS3 e JavaScript.
+
+3. Camada de aplicação e regras de negócio
+
+Responsável pelo processamento das solicitações, validação das informações, controle de acesso e execução das funcionalidades. Será utilizado o framework Django com Python.
+
+4. Camada de dados
+
+Responsável pelo armazenamento e consulta das informações dos animais, registros veterinários, adoções e doações. O banco de dados planejado será o PostgreSQL.
