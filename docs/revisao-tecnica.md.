@@ -1,0 +1,23 @@
+Revisão Técnica do Sistema
+
+Objetivo
+
+Registrar as decisões técnicas e os pontos de atenção identificados durante a revisão da arquitetura do sistema Instituto Patas Amigas.
+
+Organização
+
+O projeto utiliza uma arquitetura monolítica organizada em camadas, separando apresentação, regras de negócio e acesso aos dados.
+
+Pontos de revisão
+
+* Manter a separação de responsabilidades entre as camadas.
+* Validar os dados recebidos pelos formulários.
+* Utilizar consultas seguras ao banco de dados.
+* Restringir operações conforme o nível de acesso dos usuários.
+* Manter o código organizado e facilitar futuras manutenções.
+
+Melhorias previstas
+
+Revisar os formulários, as validações e o controle de acesso durante o desenvolvimento do MVP.
+
+Esta revisão é uma análise planejada, não uma comprovação de testes já executados.
