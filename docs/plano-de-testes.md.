@@ -1,0 +1,39 @@
+Plano de Testes — Instituto Patas Amigas
+
+1. Objetivo
+
+Definir os testes necessários para verificar o funcionamento das principais funcionalidades do sistema de gerenciamento do Instituto Patas Amigas.
+
+2. Testes funcionais
+
+Cadastro de animais
+
+Verificar se o sistema permite cadastrar animais com nome, espécie, idade, características e situação. Também será verificado o comportamento quando campos obrigatórios não forem preenchidos.
+
+Registros veterinários
+
+Verificar se é possível registrar e consultar informações de vacinação, consultas e tratamentos vinculados ao animal correto.
+
+Controle de adoções
+
+Verificar se o sistema permite registrar e acompanhar a situação dos processos de adoção.
+
+Registro de doações
+
+Verificar se as informações de doações recebidas podem ser cadastradas e consultadas corretamente.
+
+3. Testes de segurança
+
+Verificar a validação dos dados enviados, o controle de acesso dos usuários e a proteção contra operações não autorizadas.
+
+4. Testes de usabilidade e acessibilidade
+
+Avaliar a clareza dos campos, a facilidade de navegação, a legibilidade dos textos, o contraste visual e a utilização da interface em computadores e celulares.
+
+5. Critérios de aprovação
+
+Os testes serão considerados satisfatórios quando as funcionalidades apresentarem os resultados esperados, os dados forem armazenados corretamente e não forem identificadas falhas críticas que impeçam o uso do sistema.
+
+6. Observação
+
+Este plano representa a estratégia de testes prevista para o MVP. Os testes deverão ser executados durante o desenvolvimento e registrados para orientar as correções e melhorias.
