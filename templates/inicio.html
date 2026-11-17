@@ -1,24 +1,342 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instituto Patas Amigas</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 100%;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f8f5;
+            color: #26352b;
+        }
+
+        header {
+            background: #245c3a;
+            color: white;
+            padding: 22px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 1.4375rem;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.875rem;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .acessibilidade {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 8%;
+            background: #ffffff;
+            border-bottom: 1px solid #e1e9e2;
+        }
+
+        .acessibilidade span {
+            font-size: 0.875rem;
+            margin-right: 5px;
+        }
+
+        .acessibilidade button {
+            background: #245c3a;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 13px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .acessibilidade button:hover {
+            background: #19452b;
+        }
+
+        .acessibilidade button:focus-visible,
+        a:focus-visible {
+            outline: 3px solid #d99b22;
+            outline-offset: 3px;
+        }
+
+        .hero {
+            background: #e4f0e6;
+            padding: 75px 8%;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .hero span {
+            color: #39764d;
+            font-weight: bold;
+            font-size: 0.8125rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 {
+            font-size: 2.625rem;
+            margin: 18px 0;
+            line-height: 1.2;
+            color: #245c3a;
+        }
+
+        .hero p {
+            font-size: 1.0625rem;
+            line-height: 1.7;
+            color: #526357;
+            margin-bottom: 28px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #245c3a;
+            color: white;
+            padding: 14px 24px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            background: #19452b;
+        }
+
+        main {
+            padding: 55px 8%;
+        }
+
+        .section-title {
+            margin-bottom: 12px;
+            color: #245c3a;
+            font-size: 1.6875rem;
+        }
+
+        .section-description {
+            color: #68776c;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            background: white;
+            padding: 28px;
+            border-radius: 12px;
+            border: 1px solid #e1e9e2;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+        }
+
+        .card h3 {
+            color: #245c3a;
+            margin-bottom: 12px;
+            font-size: 1.1875rem;
+        }
+
+        .card p {
+            color: #68776c;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.875rem;
+        }
+
+        .card a {
+            color: #39764d;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .card a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background: #1d4930;
+            color: #dce9df;
+            text-align: center;
+            padding: 25px;
+            font-size: 0.8125rem;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 20px 6%;
+            }
+
+            .hero {
+                padding: 55px 6%;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            main {
+                padding: 40px 6%;
+            }
+
+            .acessibilidade {
+                padding: 12px 6%;
+            }
+        }
+    </style>
 </head>
+
 <body>
+
     <header>
-        <h1>Instituto Patas Amigas</h1>
-        <p>Sistema de gerenciamento de animais</p>
+        <div class="logo">Instituto Patas Amigas</div>
+
+        <nav aria-label="Navegação principal">
+            <a href="/">Início</a>
+            <a href="{% url 'lista_animais' %}">Animais</a>
+            <a href="{% url 'cadastrar_animal' %}">Cadastrar</a>
+        </nav>
     </header>
 
-    <main>
-        <h2>Bem-vindo ao sistema</h2>
-        <p>Gerencie os animais cadastrados pela instituição.</p>
+    <div class="acessibilidade" role="group"
+         aria-label="Controles de tamanho do texto">
+        <span>Acessibilidade:</span>
 
-        <nav>
-            <a href="/animais/">Consultar animais</a>
-            <a href="/animais/novo/">Cadastrar animal</a>
-        </nav>
+        <button type="button" id="diminuirFonte"
+                aria-label="Diminuir tamanho do texto">A−</button>
+
+        <button type="button" id="aumentarFonte"
+                aria-label="Aumentar tamanho do texto">A+</button>
+
+        <button type="button" id="resetarFonte"
+                aria-label="Restaurar tamanho original">A</button>
+    </div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <span>Gestão e cuidado animal</span>
+
+            <h1>Organização para transformar vidas.</h1>
+
+            <p>
+                Bem-vindo ao sistema do Instituto Patas Amigas.
+                Uma plataforma desenvolvida para facilitar o
+                gerenciamento dos animais, centralizar informações
+                e apoiar o trabalho da instituição.
+            </p>
+
+            <a href="{% url 'lista_animais' %}" class="button">
+                Acessar animais
+            </a>
+        </div>
+    </section>
+
+    <main>
+        <h2 class="section-title">Gerenciamento</h2>
+
+        <p class="section-description">
+            Acesse as principais funcionalidades do sistema.
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Consultar animais</h3>
+                <p>
+                    Visualize os animais cadastrados e consulte
+                    suas informações de registro.
+                </p>
+                <a href="{% url 'lista_animais' %}">
+                    Ver animais →
+                </a>
+            </div>
+
+            <div class="card">
+                <h3>Cadastrar animal</h3>
+                <p>
+                    Registre novos animais e mantenha os dados
+                    da instituição organizados.
+                </p>
+                <a href="{% url 'cadastrar_animal' %}">
+                    Novo cadastro →
+                </a>
+            </div>
+
+        </div>
     </main>
+
+    <footer>
+        Instituto Patas Amigas · Sistema de Gerenciamento de Animais
+    </footer>
+
+    <script>
+        let tamanhoFonte = 100;
+
+        const minimo = 80;
+        const maximo = 150;
+
+        function atualizarFonte() {
+            document.documentElement.style.fontSize =
+                tamanhoFonte + "%";
+        }
+
+        document.getElementById("aumentarFonte")
+            .addEventListener("click", function() {
+                if (tamanhoFonte < maximo) {
+                    tamanhoFonte += 10;
+                    atualizarFonte();
+                }
+            });
+
+        document.getElementById("diminuirFonte")
+            .addEventListener("click", function() {
+                if (tamanhoFonte > minimo) {
+                    tamanhoFonte -= 10;
+                    atualizarFonte();
+                }
+            });
+
+        document.getElementById("resetarFonte")
+            .addEventListener("click", function() {
+                tamanhoFonte = 100;
+                atualizarFonte();
+            });
+    </script>
+
 </body>
 </html>
