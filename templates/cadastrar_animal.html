@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar animal</title>
+</head>
+<body>
+    <header>
+        <h1>Cadastrar novo animal</h1>
+        <a href="/">Voltar ao início</a>
+    </header>
+
+    <main>
+        <form method="post">
+            {% csrf_token %}
+
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <br><br>
+
+            <label for="especie">Espécie:</label>
+            <input type="text" id="especie" name="especie" required>
+
+            <br><br>
+
+            <label for="idade">Idade:</label>
+            <input type="number" id="idade" name="idade" min="0">
+
+            <br><br>
+
+            <button type="submit">Cadastrar animal</button>
+        </form>
+    </main>
+</body>
+</html>
