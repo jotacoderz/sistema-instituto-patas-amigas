@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Animal
+from .forms import AnimalForm
 
 
 def inicio(request):
@@ -13,16 +14,12 @@ def lista_animais(request):
 
 def cadastrar_animal(request):
     if request.method == "POST":
-        nome = request.POST.get("nome")
-        especie = request.POST.get("especie")
-        idade = request.POST.get("idade")
+        form = AnimalForm(request.POST)
 
-        Animal.objects.create(
-            nome=nome,
-            especie=especie,
-            idade=int(idade) if idade else None
-        )
+        if form.is_valid():
+            form.save()
+            return redirect("lista_animais")
+    else:
+        form = AnimalForm()
 
-        return redirect("lista_animais")
-
-    return render(request, "cadastrar_animal.html")
+    return render(request, "cadastrar_animal.html", {"form": form})
