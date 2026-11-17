@@ -2,3 +2,7 @@ Django==5.2
 pytest
 pytest-django
 coverage
+gunicorn
+whitenoise
+dj-database-url
+psycopg[binary]
