@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animais cadastrados</title>
+</head>
+<body>
+    <header>
+        <h1>Animais cadastrados</h1>
+        <a href="/">Voltar ao início</a>
+    </header>
+
+    <main>
+        {% if animais %}
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Espécie</th>
+                        <th>Idade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for animal in animais %}
+                    <tr>
+                        <td>{{ animal.nome }}</td>
+                        <td>{{ animal.especie }}</td>
+                        <td>{{ animal.idade|default:"Não informada" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Nenhum animal cadastrado.</p>
+        {% endif %}
+
+        <p><a href="/animais/novo/">Cadastrar novo animal</a></p>
+    </main>
+</body>
+</html>
