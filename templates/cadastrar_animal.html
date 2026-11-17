@@ -3,35 +3,211 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar animal</title>
+    <title>Cadastrar animal | Instituto Patas Amigas</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f8f5;
+            color: #26352b;
+        }
+
+        header {
+            background: #245c3a;
+            color: white;
+            padding: 22px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            gap: 22px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: 55px auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            color: #245c3a;
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .descricao {
+            color: #718075;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .painel {
+            background: white;
+            border: 1px solid #e1e9e2;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+        }
+
+        .painel h2 {
+            color: #245c3a;
+            font-size: 19px;
+            margin-bottom: 25px;
+        }
+
+        form p {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: #354c3b;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 9px;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #d7e1d8;
+            border-radius: 7px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #39764d;
+            box-shadow: 0 0 0 3px #e4f0e6;
+        }
+
+        .ajuda {
+            display: block;
+            color: #718075;
+            font-size: 12px;
+            margin-top: 6px;
+        }
+
+        .acoes {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .botao {
+            border: none;
+            background: #245c3a;
+            color: white;
+            padding: 14px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .botao:hover {
+            background: #19452b;
+        }
+
+        .cancelar {
+            background: #edf4ee;
+            color: #245c3a;
+        }
+
+        .cancelar:hover {
+            background: #dceadd;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #718075;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 20px 6%;
+            }
+
+            .container {
+                margin: 35px auto;
+            }
+
+            .painel {
+                padding: 22px;
+            }
+        }
+    </style>
 </head>
+
 <body>
+
     <header>
-        <h1>Cadastrar novo animal</h1>
-        <a href="/">Voltar ao início</a>
+        <div class="logo">Instituto Patas Amigas</div>
+
+        <nav>
+            <a href="/">Início</a>
+            <a href="{% url 'lista_animais' %}">Animais</a>
+            <a href="{% url 'cadastrar_animal' %}">Cadastrar</a>
+        </nav>
     </header>
 
-    <main>
-        <form method="post">
-            {% csrf_token %}
+    <main class="container">
+        <h1>Cadastrar novo animal</h1>
 
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" required>
+        <p class="descricao">
+            Preencha as informações abaixo para registrar um novo animal.
+        </p>
 
-            <br><br>
+        <section class="painel">
+            <h2>Informações do animal</h2>
 
-            <label for="especie">Espécie:</label>
-            <input type="text" id="especie" name="especie" required>
+            <form method="post">
+                {% csrf_token %}
 
-            <br><br>
+                {{ form.as_p }}
 
-            <label for="idade">Idade:</label>
-            <input type="number" id="idade" name="idade" min="0">
+                <div class="acoes">
+                    <button type="submit" class="botao">
+                        Salvar cadastro
+                    </button>
 
-            <br><br>
-
-            <button type="submit">Cadastrar animal</button>
-        </form>
+                    <a href="/" class="botao cancelar">
+                        Cancelar
+                    </a>
+                </div>
+            </form>
+        </section>
     </main>
+
+    <footer>
+        Instituto Patas Amigas · Sistema de Gerenciamento de Animais
+    </footer>
+
 </body>
 </html>
