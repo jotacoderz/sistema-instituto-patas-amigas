@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animais cadastrados | Instituto Patas Amigas</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f8f5;
+            color: #26352b;
+        }
+
+        header {
+            background: #245c3a;
+            color: white;
+            padding: 22px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            gap: 22px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 55px auto;
+            padding: 0 25px;
+        }
+
+        .topo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: #245c3a;
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .descricao {
+            color: #718075;
+            font-size: 14px;
+        }
+
+        .botao {
+            background: #245c3a;
+            color: white;
+            padding: 13px 20px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .botao:hover {
+            background: #19452b;
+        }
+
+        .painel {
+            background: white;
+            border: 1px solid #e1e9e2;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+        }
+
+        .painel h2 {
+            color: #245c3a;
+            font-size: 19px;
+            margin-bottom: 20px;
+        }
+
+        .tabela {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .tabela th {
+            background: #edf4ee;
+            color: #245c3a;
+            text-align: left;
+            padding: 15px;
+            font-size: 13px;
+        }
+
+        .tabela td {
+            padding: 16px 15px;
+            border-bottom: 1px solid #edf0ed;
+            font-size: 14px;
+        }
+
+        .tabela tr:hover td {
+            background: #f8fbf8;
+        }
+
+        .vazio {
+            text-align: center;
+            padding: 35px;
+            color: #718075;
+        }
+
+        .voltar {
+            display: inline-block;
+            margin-top: 25px;
+            color: #39764d;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #718075;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 20px 6%;
+            }
+
+            .container {
+                margin: 35px auto;
+                padding: 0 15px;
+            }
+
+            .painel {
+                padding: 15px;
+                overflow-x: auto;
+            }
+
+            .tabela {
+                min-width: 450px;
+            }
+
+            .topo {
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">Instituto Patas Amigas</div>
+
+        <nav>
+            <a href="/">Início</a>
+            <a href="{% url 'lista_animais' %}">Animais</a>
+            <a href="{% url 'cadastrar_animal' %}">Cadastrar</a>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <div class="topo">
+            <div>
+                <h1>Animais cadastrados</h1>
+                <p class="descricao">
+                    Consulte e acompanhe os registros da instituição.
+                </p>
+            </div>
+
+            <a href="{% url 'cadastrar_animal' %}" class="botao">
+                + Cadastrar animal
+            </a>
+        </div>
+
+        <section class="painel">
+            <h2>Registros de animais</h2>
+
+            {% if animais %}
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Espécie</th>
+                            <th>Idade</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for animal in animais %}
+                            <tr>
+                                <td>{{ animal.nome }}</td>
+                                <td>{{ animal.especie }}</td>
+                                <td>
+                                    {% if animal.idade != None %}
+                                        {{ animal.idade }} anos
+                                    {% else %}
+                                        Não informada
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div class="vazio">
+                    Nenhum animal cadastrado até o momento.
+                </div>
+            {% endif %}
+        </section>
+
+        <a href="/" class="voltar">← Voltar ao início</a>
+
+    </main>
+
+    <footer>
+        Instituto Patas Amigas · Sistema de Gerenciamento de Animais
+    </footer>
+
+</body>
+</html>

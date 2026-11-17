@@ -1,0 +1,250 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instituto Patas Amigas</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f8f5;
+            color: #26352b;
+        }
+
+        header {
+            background: #245c3a;
+            color: white;
+            padding: 22px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .hero {
+            background: #e4f0e6;
+            padding: 75px 8%;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .hero span {
+            color: #39764d;
+            font-weight: bold;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin: 18px 0;
+            line-height: 1.2;
+            color: #245c3a;
+        }
+
+        .hero p {
+            font-size: 17px;
+            line-height: 1.7;
+            color: #526357;
+            margin-bottom: 28px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #245c3a;
+            color: white;
+            padding: 14px 24px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            background: #19452b;
+        }
+
+        main {
+            padding: 55px 8%;
+        }
+
+        .section-title {
+            margin-bottom: 12px;
+            color: #245c3a;
+            font-size: 27px;
+        }
+
+        .section-description {
+            color: #68776c;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            background: white;
+            padding: 28px;
+            border-radius: 12px;
+            border: 1px solid #e1e9e2;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+        }
+
+        .card h3 {
+            color: #245c3a;
+            margin-bottom: 12px;
+            font-size: 19px;
+        }
+
+        .card p {
+            color: #68776c;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .card a {
+            color: #39764d;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .card a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background: #1d4930;
+            color: #dce9df;
+            text-align: center;
+            padding: 25px;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 20px 6%;
+            }
+
+            .hero {
+                padding: 55px 6%;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            main {
+                padding: 40px 6%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">Instituto Patas Amigas</div>
+
+        <nav>
+            <a href="/">Início</a>
+            <a href="{% url 'lista_animais' %}">Animais</a>
+            <a href="{% url 'cadastrar_animal' %}">Cadastrar</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <span>Gestão e cuidado animal</span>
+
+            <h1>Organização para transformar vidas.</h1>
+
+            <p>
+                Bem-vindo ao sistema do Instituto Patas Amigas.
+                Uma plataforma desenvolvida para facilitar o
+                gerenciamento dos animais, centralizar informações
+                e apoiar o trabalho da instituição.
+            </p>
+
+            <a href="{% url 'lista_animais' %}" class="button">
+                Acessar animais
+            </a>
+        </div>
+    </section>
+
+    <main>
+        <h2 class="section-title">Gerenciamento</h2>
+
+        <p class="section-description">
+            Acesse as principais funcionalidades do sistema.
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Consultar animais</h3>
+                <p>
+                    Visualize os animais cadastrados e consulte
+                    suas informações de registro.
+                </p>
+                <a href="{% url 'lista_animais' %}">
+                    Ver animais →
+                </a>
+            </div>
+
+            <div class="card">
+                <h3>Cadastrar animal</h3>
+                <p>
+                    Registre novos animais e mantenha os dados
+                    da instituição organizados.
+                </p>
+                <a href="{% url 'cadastrar_animal' %}">
+                    Novo cadastro →
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        Instituto Patas Amigas · Sistema de Gerenciamento de Animais
+    </footer>
+
+</body>
+</html>
